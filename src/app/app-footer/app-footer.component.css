@@ -15,12 +15,13 @@ footer {
   grid-area: TextoCopyright;
 }
 
-.LogoRodape {
-  justify-self: center;
-  grid-area: LogoRodape;
+.containerFoot {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-footer small {
+footer small, footer p {
   color: white;
 }
 
