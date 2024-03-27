@@ -1,0 +1,27 @@
+<section class="container login-user ff-inter">
+  <div class="container">
+    <div class="text-center mb-2">
+        <h3>Faça o seu login abaixo</h3>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+        <form [formGroup]="loginForm" (ngSubmit)="performLogin()" style="width:50vw; min-width:300px;">
+          <div class="row mt-3">
+                <div class="col">
+                    <label class="form-label">Login</label>
+                    <input type="text" formControlName="login" class="form-control" placeholder="Digite seu login" required>
+                </div>
+
+                <div class="col">
+                    <label class="form-label">Senha</label>
+                    <input type="password" formControlName="senha" class="form-control" placeholder="Digite sua senha" required>
+                </div>
+            </div>
+              <button id="submitButton" class="btn btn-lg btn-primary" type="submit">Fazer o Login</button>
+        </form>
+    </div>
+  </div>
+</section>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+

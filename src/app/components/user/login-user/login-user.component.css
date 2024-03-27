@@ -1,0 +1,34 @@
+#submitButton {
+  display: block;
+  margin: 2rem 0.5rem;
+}
+
+.login-user {
+  padding: 2rem 0;
+}
+
+.login-user form {
+  background: #C4EDFF;
+
+  border: none;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem;
+}
+
+.login-user form label {
+  color: #154580;
+  font-weight: bold;
+  margin: 0 0 1rem;
+}
+
+.login-user form .input {
+  border: none;
+  height: 40px;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  margin: 0.5rem 0 2rem;
+}
