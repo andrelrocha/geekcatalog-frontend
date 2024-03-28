@@ -1,0 +1,46 @@
+#submitButton {
+  display: block;
+  margin: 2rem 0.5rem;
+}
+
+#cancelButton {
+  display: block;
+  margin: 2rem 0.5rem;
+}
+
+#buttonsCreateUser {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+}
+
+.criar-user {
+  padding: 2rem 0;
+}
+
+.criar-user form {
+  background: #C4EDFF;
+
+  border: none;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 2rem;
+}
+
+.criar-user form label {
+  color: #154580;
+  font-weight: bold;
+  margin: 0 0 1rem;
+}
+
+.criar-user form .input {
+  border: none;
+  height: 40px;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  margin: 0.5rem 0 2rem;
+}

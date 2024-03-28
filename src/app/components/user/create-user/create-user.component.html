@@ -1,0 +1,41 @@
+<section class="container criar-user ff-inter">
+  <div class="container">
+    <div class="text-center mb-2">
+        <h3 class="ff-inter">Criação de Usuário</h3>
+        <p class="text-muted ff-roboto-mono">Cadastre-se abaixo</p>
+    </div>
+
+    <div class="container d-flex justify-content-center">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" style="width:50vw; min-width:300px;">
+          <div class="row">
+              <div class="col">
+                  <label class="form-label">Nome</label>
+                  <input type="text" id="userName" formControlName="nome" class="form-control" placeholder="Digite seu nome" required>
+              </div>
+              <div class="col">
+                  <label class="form-label">CPF</label>
+                  <input type="text" id="userCpf" formControlName="cpf" class="form-control" placeholder="Digite seu CPF" required>
+              </div>
+          </div>
+          <div class="row mt-3">
+                <div class="col">
+                    <label class="form-label">Login</label>
+                    <input type="text" id="userLogin" formControlName="login" class="form-control" placeholder="Digite seu login" required>
+                </div>
+
+                <div class="col">
+                    <label class="form-label">Senha</label>
+                    <input type="password" id="userPassword" formControlName="senha" class="form-control" placeholder="Digite sua senha" required>
+                </div>
+            </div>
+            <div id="buttonsCreateUser">
+              <button id="submitButton" class="btn btn-lg btn-primary" type="submit">Criar Usuário</button>
+              <button id="cancelButton" class="btn btn-lg btn-secondary" type="button" (click)="cancel()">Cancelar</button>
+          </div>
+
+        </form>
+    </div>
+  </div>
+</section>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
