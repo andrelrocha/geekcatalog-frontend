@@ -1,12 +1,12 @@
 <section class="container criar-user ff-inter">
   <div class="container">
     <div class="text-center mb-2">
-        <h3 class="ff-inter">Criação de Usuário</h3>
+        <h3 class="ff-roboto-mono">Criação de Usuário</h3>
         <p class="text-muted ff-roboto-mono">Cadastre-se abaixo</p>
     </div>
 
     <div class="container d-flex justify-content-center">
-        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" style="width:50vw; min-width:300px;">
+        <form id="formContainer" [formGroup]="userForm" (ngSubmit)="onSubmit()">
           <div class="row">
               <div class="col">
                   <label class="form-label">Nome</label>

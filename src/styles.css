@@ -41,6 +41,12 @@ h2 {
   margin-left: auto;
 }
 
+#formContainer {
+  width: 50vw;
+  margin: 0 auto;
+  min-width: 300px;
+}
+
 .botao:hover {
   border: 2px solid #84EEC1;
   color: #84EEC1;

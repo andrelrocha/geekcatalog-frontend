@@ -1,11 +1,11 @@
 <section class="container login-user ff-inter">
   <div class="container">
     <div class="text-center mb-2">
-        <h3>Faça o seu login abaixo</h3>
+        <h3 class="ff-roboto-mono">Faça o seu login abaixo</h3>
     </div>
 
     <div class="container d-flex justify-content-center">
-        <form [formGroup]="loginForm" (ngSubmit)="performLogin()" style="width:50vw; min-width:300px;">
+        <form id="formContainer" [formGroup]="loginForm" (ngSubmit)="performLogin()">
           <div class="row mt-3">
                 <div class="col">
                     <label class="form-label">Login</label>

@@ -10,7 +10,7 @@
 
 #buttonsCreateUser {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   align-content: center;
 }

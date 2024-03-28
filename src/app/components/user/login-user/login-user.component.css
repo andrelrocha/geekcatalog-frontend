@@ -1,6 +1,7 @@
 #submitButton {
   display: block;
-  margin: 2rem 0.5rem;
+  margin: 2rem auto;
+  width: 50%;
 }
 
 .login-user {

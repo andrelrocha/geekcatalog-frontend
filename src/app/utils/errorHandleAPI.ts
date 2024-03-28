@@ -3,13 +3,19 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ErrorHandleAPI {
-  static handleError(error: HttpErrorResponse): void {
+  static handleError(error: HttpErrorResponse): string {
+    let errorMessage: string;
     if (error.status === 400) {
-      alert(`Erro ${error.status}: \n${error.error}`);
+      errorMessage = `Erro ${error.status}: \n${error.error}`;
+      alert(errorMessage);
     } else if (error.status === 401 || error.status === 403) {
-      alert(`Erro ${error.status}: \n${error.error} \nFaça o login novamente`);
+      errorMessage = `Erro ${error.status}: \n${error.error}`;
     } else {
-      alert('Erro ao logar usuário. Por favor, tente novamente.');
+      errorMessage = `Erro ${error.status}: \n${error.error}`;
+      console.log(error);
+      alert(errorMessage);
     }
+    console.error(errorMessage);
+    return errorMessage;
   }
 }
