@@ -22,10 +22,10 @@ export class GetUserByidComponent implements OnInit {
 
   ngOnInit() {
     this.userForm = this.fb.group({
-      id: [''],
-      nome: [''],
-      cpf: [''],
-      login: ['']
+      id: { value: '', disabled: true },
+      nome: { value: '', disabled: true },
+      cpf: { value: '', disabled: true },
+      login: { value: '', disabled: true }
     });
 
 
@@ -50,9 +50,19 @@ export class GetUserByidComponent implements OnInit {
     });
   }
 
-  ngOnDestroy() {
-    if (this.userSubscription) {
-      this.userSubscription.unsubscribe();
+  toggleForm(enable: boolean) {
+    if (enable) {
+      this.userForm.enable();
+      const tituloTela = document.getElementById('tituloTelaUser');
+      if (tituloTela) {
+        tituloTela.textContent = 'Edite suas informações';
+      }
+      document.getElementById('permitirEdicao')?.classList.add('hide');
+      document.getElementById('salvarEdicao')?.classList.remove('hide');
+      document.getElementById('cancelarEdicao')?.classList.remove('hide');
+    } else {
+      this.userForm.disable();
+      window.location.reload();
     }
   }
 }

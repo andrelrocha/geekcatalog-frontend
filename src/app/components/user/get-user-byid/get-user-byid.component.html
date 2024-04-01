@@ -1,26 +1,39 @@
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+
 <section class="container criar-user ff-inter">
   <div class="container">
     <div class="text-center mb-2">
-        <h3 class="ff-roboto-mono">Bem vindo {{userForm.value.nome}}</h3>
+        <h3 id="tituloTelaUser" class="ff-roboto-mono">Bem vindo {{userForm.value.nome}}</h3>
     </div>
 
     <div class="container d-flex justify-content-center">
         <form id="formContainer" [formGroup]="userForm">
           <div class="col">
             <label class="form-label">ID</label>
-            <input type="text" id="userId" formControlName="id" class="form-control">
+            <input type="text" id="userId" formControlName="id" class="form-control ff-inter">
           </div>
           <div class="col">
               <label class="form-label">Login</label>
-              <input type="text" id="userLogin" formControlName="login" class="form-control">
+              <input type="text" id="userLogin" formControlName="login" class="form-control ff-inter">
           </div>
           <div class="col">
               <label class="form-label">Nome</label>
-              <input type="text" id="userName" formControlName="nome" class="form-control">
+              <input type="text" id="userName" formControlName="nome" class="form-control ff-inter">
           </div>
           <div class="col">
               <label class="form-label">CPF</label>
-              <input type="text" id="userCpf" formControlName="cpf" class="form-control">
+              <input type="text" id="userCpf" formControlName="cpf" class="form-control ff-inter">
+          </div>
+
+          <div id="botoesEdicao">
+            <button id="permitirEdicao" class="btn btn-primary" (click)="toggleForm(true)">Editar Informações</button>
+
+            <div id="salvarEdicao" class="hide">
+              <i class="fa fa-check-circle" aria-hidden="true" (click)="toggleForm(false)"></i>
+            </div>
+            <div id="cancelarEdicao" class="hide">
+                <i class="fa fa-ban" aria-hidden="true"  (click)="toggleForm(false)"></i>
+            </div>
           </div>
         </form>
     </div>

@@ -14,12 +14,12 @@ export class GetUserByid {
   getUserById(): Observable<UserReturn> {
     const token = this.authService.getAuthToken();
 
-    if (!token) {
+    if (token === null || token === undefined) {
+      console.error("Token não encontrado");
       throw new Error("Token não encontrado");
     }
 
     const headers = new HttpHeaders({
-      contentType: 'application/json',
       Authorization: `Bearer ${token}`
     });
 
@@ -27,7 +27,7 @@ export class GetUserByid {
 
     return this.http.get(urlId, { headers }).pipe(
       switchMap((response: any) => {
-        const url = environment.apiUrl + 'user/byid/' + response.id;
+        const url = environment.apiUrl + 'user/byid/' + response.userId;
         return this.http.get(url, { headers }).pipe(
           map(resp => MapResponseToDTO.mapResponseToUserReturn(resp)),
           catchError(error => {

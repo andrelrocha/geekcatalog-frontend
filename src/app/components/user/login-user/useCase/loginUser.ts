@@ -30,10 +30,11 @@ export class LoginUser {
               alert('Erro ao logar usuário. Por favor, tente novamente.');
               return;
             }
-            loginForm.reset();
             this.authService.setAuthToken(response.token);
+            console.log(response.token);
             alert('Usuário logado com sucesso!');
-            //window.location.href = 'http://localhost:4200/login';
+            loginForm.reset();
+            window.location.href = 'http://localhost:4200/user';
           },
           error: (error: any) => {
             ErrorHandleAPI.handleError(error);
