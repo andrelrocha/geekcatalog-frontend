@@ -14,12 +14,22 @@
               </div>
               <div class="col">
                   <label class="form-label">CPF</label>
-                  <input type="text" id="userCpf" formControlName="cpf" class="form-control" placeholder="Digite seu CPF" required>
+                  <input type="text" id="userCpf" formControlName="cpf" class="form-control" placeholder="Digite seu CPF" mask="000.000.000-00" [dropSpecialCharacters]="false" required>
               </div>
           </div>
           <div class="row mt-3">
+            <div class="col">
+              <label class="form-label">Telefone</label>
+              <input type="text" id="userTelefone" formControlName="telefone" class="form-control" placeholder="Digite seu telefone" mask="(00)0000-00000||(00)00000-0000" [dropSpecialCharacters]="false">
+            </div>
+            <div class="col">
+              <label class="form-label">Data Nascimento</label>
+              <input type="text" id="userNascimento" formControlName="data_nascimento" class="form-control" placeholder="Digite sua data de nascimento" mask="00/00/0000" [dropSpecialCharacters]="false">
+            </div>
+          </div>
+          <div class="row mt-3">
                 <div class="col">
-                    <label class="form-label">Login</label>
+                    <label class="form-label">Email/Login</label>
                     <input type="text" id="userLogin" formControlName="login" class="form-control" placeholder="Digite seu login" required>
                 </div>
 

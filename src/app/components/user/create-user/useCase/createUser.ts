@@ -15,12 +15,18 @@ export class CreateUser {
           contentType: 'application/json',
         });
 
+        const birthday = this.convertToISODate(userForm.value.data_nascimento);
+
         const userData = {
           login: userForm.value.login,
           password: userForm.value.senha,
           name: userForm.value.nome,
-          cpf: userForm.value.cpf
+          cpf: userForm.value.cpf,
+          phone: userForm.value.telefone,
+          birthday
         };
+
+        console.log(userData);
 
         const url = `${environment.apiUrl}user/create`;
 
@@ -40,5 +46,11 @@ export class CreateUser {
       console.log('Formulário inválido!');
       FormUtils.logValidationErrors(userForm);
     }
+  }
+
+  convertToISODate(inputDate: string) {
+    const parts = inputDate.split('/');
+    const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+    return formattedDate;
   }
 }
