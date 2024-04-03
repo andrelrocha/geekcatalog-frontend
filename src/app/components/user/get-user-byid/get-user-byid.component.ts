@@ -1,18 +1,20 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { GetUserByid } from './useCase/getUserById';
 import { UserReturn } from '../DTO/userReturnDTO';
 import { environment } from '../../../../environments/environment';
-import { Observable, Subscription } from 'rxjs';
+import { FormUtils } from '../../../utils/formUtils';
 
 @Component({
   selector: 'app-get-user-byid',
   standalone: true,
-  imports: [ReactiveFormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, HttpClientModule, NgxMaskDirective, NgxMaskPipe],
   templateUrl: './get-user-byid.component.html',
   styleUrl: './get-user-byid.component.scss',
-  providers: [ GetUserByid ]
+  providers: [ GetUserByid, provideNgxMask() ]
 })
 export class GetUserByidComponent implements OnInit {
   userForm: FormGroup = new FormGroup({});
@@ -20,12 +22,14 @@ export class GetUserByidComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private getUser: GetUserByid) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.userForm = this.fb.group({
       id: { value: '', disabled: true },
+      login: { value: '', disabled: true },
       nome: { value: '', disabled: true },
       cpf: { value: '', disabled: true },
-      login: { value: '', disabled: true }
+      telefone: { value: '', disabled: true },
+      data_nascimento: { value: '', disabled: true }
     });
 
 
@@ -39,9 +43,11 @@ export class GetUserByidComponent implements OnInit {
 
         this.userForm.patchValue({
           id: user.id,
+          login: user.login,
           nome: user.nome,
           cpf: user.cpf,
-          login: user.login
+          telefone: user.telefone,
+          data_nascimento: user.data_nascimento
         });
       },
       error: (error: any) => {
@@ -64,5 +70,13 @@ export class GetUserByidComponent implements OnInit {
       this.userForm.disable();
       window.location.reload();
     }
+  }
+
+  onSubmit() {
+
+  }
+
+  cancel() {
+    FormUtils.cancel(this.userForm);
   }
 }

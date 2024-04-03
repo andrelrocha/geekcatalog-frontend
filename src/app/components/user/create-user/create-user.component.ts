@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormUtils } from '../../../utils/formUtils';
 import { CreateUser } from './useCase/createUser';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
-import { NgxPhoneMaskBrModule } from 'ngx-phone-mask-br';
 
 @Component({
   selector: 'app-create-user',
@@ -12,7 +11,7 @@ import { NgxPhoneMaskBrModule } from 'ngx-phone-mask-br';
   imports: [ReactiveFormsModule, HttpClientModule, NgxMaskDirective, NgxMaskPipe],
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.css'],
-  providers: [CreateUser, FormUtils, provideNgxMask(), NgxPhoneMaskBrModule]
+  providers: [CreateUser, FormUtils, provideNgxMask()]
 })
 export class CreateUserComponent implements OnInit {
   userForm: FormGroup = new FormGroup({});
@@ -28,14 +27,6 @@ export class CreateUserComponent implements OnInit {
       telefone: ['', [Validators.pattern(/^\(\d{2}\)\d{4,5}-\d{4}$/)]],
       data_nascimento: ['', [Validators.pattern('^\\d{2}/\\d{2}/\\d{4}$')]]
     });
-  }
-
-  trimWhiteSpaceFromBirthday() {
-    const oldValue = this.userForm.controls['telefone'].value;
-  console.log("'"+oldValue+"'");
-    const newValue = oldValue.trim();
-    console.log("'"+newValue+"'");
-    this.userForm.controls['telefone'].setValue(newValue);
   }
 
   onSubmit() {

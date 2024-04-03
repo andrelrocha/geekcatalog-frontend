@@ -15,6 +15,13 @@ export class AuthService {
     return this.cookieService.get('auth');
   }
 
+  getAuthTokenAsync(): Promise<string | undefined> {
+    return new Promise((resolve, reject) => {
+      const token = this.cookieService.get('auth');
+      resolve(token);
+    });
+  }
+
   deleteAuthToken(): void {
     this.cookieService.delete('auth');
   }

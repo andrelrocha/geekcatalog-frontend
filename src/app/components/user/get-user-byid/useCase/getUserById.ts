@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, map, Observable, switchMap } from "rxjs";
+import { catchError, map, Observable, of, switchMap } from "rxjs";
 import { environment } from "../../../../../environments/environment";
 import { AuthService } from "../../../../service/authService";
 import { ErrorHandleAPI } from "../../../../utils/errorHandleAPI";
@@ -17,25 +17,18 @@ export class GetUserByid {
     if (token === null || token === undefined) {
       console.error("Token não encontrado");
       throw new Error("Token não encontrado");
+    } else if (token.trim() === '') {
+      console.error("Token retornou uma string vazia");
     }
 
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
     });
 
-    const urlId = environment.apiUrl + 'user/getuserid/' + token;
+    const url = environment.apiUrl + 'user/bytokenjwt';
 
-    return this.http.get(urlId, { headers }).pipe(
-      switchMap((response: any) => {
-        const url = environment.apiUrl + 'user/byid/' + response.userId;
-        return this.http.get(url, { headers }).pipe(
-          map(resp => MapResponseToDTO.mapResponseToUserReturn(resp)),
-          catchError(error => {
-            ErrorHandleAPI.handleError(error);
-            throw error;
-          })
-        );
-      }),
+    return this.http.get(url, { headers }).pipe(
+      map(resp => MapResponseToDTO.mapResponseToUserReturn(resp)),
       catchError(error => {
         ErrorHandleAPI.handleError(error);
         throw error;
